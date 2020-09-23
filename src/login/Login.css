@@ -1,0 +1,45 @@
+.login{
+  background-color: rgb(27, 27, 48);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+    height: 100vh;
+}
+.login__container{
+  border: 2px solid;
+  border-color: #f85306 #ee4300 #ff2d96 #ff79bc;
+  margin: auto;
+  max-width: 320px;
+  padding: 20px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+.auth h1{
+  font-weight: 400;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  color: black;
+}
+.auth a{
+  text-decoration: none;
+}
+.auth input{
+  width: 98%;
+  height: 30px;
+  border-radius: 3px;
+  outline: 0;
+  border: 1px solid;
+  border-color:  #23ebff #28cdff #6eff00;
+  margin-bottom: 5px;
+  
+}
+.login__action{
+  display: flex;
+  flex-direction: column;
+}
+.auth button{
+  width: 100%;
+  margin-bottom: 5px;
+}

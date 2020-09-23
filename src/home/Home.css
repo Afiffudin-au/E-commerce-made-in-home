@@ -1,0 +1,7 @@
+.Home__row{
+  display: flex;
+  margin-left: 5px;
+  margin-right: 5px;
+  gap: 10px;
+  flex-wrap: wrap;
+}

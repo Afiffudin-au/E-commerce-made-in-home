@@ -11,7 +11,7 @@ export const useCounterAddToCart = (id,img,title,price,rate,decs) => {
        title : title,
        price : price,
        rate : rate,
-       decs : decs
+       decs : decs,
       }
     })
   }

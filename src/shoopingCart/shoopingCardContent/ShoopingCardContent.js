@@ -7,16 +7,15 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { useStyles } from '../../useStyles/useStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useCounterRemoveCart } from '../../useCounter/useCounter';
-function ShoopingCardContent({id,img,title,price,rate,decs}) {
+function ShoopingCardContent({id,img,title,price,rate,decs,hideButton}) {
   const [expanded, setExpanded] = React.useState(false);
   const [removeCart] = useCounterRemoveCart(id)
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
   const classes = useStyles()
-
   return (
-    <div className="cart__box"> 
+    <div className="cart__box">
         <div className="cart__content">  
           <div className="cart__imgThumb">
             <img className="cart__thumb" src={img} alt=""/>
@@ -42,9 +41,13 @@ function ShoopingCardContent({id,img,title,price,rate,decs}) {
             </Collapse> 
           </div>
           <div className="cart__action">
-            <IconButton onClick={removeCart}>
-              <DeleteIcon  style={{color : blueGrey[300],fontSize : '30px'}}/>
-            </IconButton>
+            {
+              !hideButton && (
+                <IconButton onClick={removeCart}>
+                  <DeleteIcon  style={{color : blueGrey[300],fontSize : '30px'}}/>
+                </IconButton>
+              )
+            }
           </div>
         </div>
       </div>

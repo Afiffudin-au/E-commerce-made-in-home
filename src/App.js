@@ -12,10 +12,13 @@ import Favorite from './favoriteProduct/Favorite';
 import ShoopingCard from './shoopingCart/ShoopingCard';
 import { useStateValue } from './stateProvider/StateProvider';
 import { auth } from './firebase';
+import {Elements} from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js';
+import Orders from './orders/Orders';
+const promise = loadStripe('pk_test_51HUql0HC4PtuoUpoe0QpdBj5B4QZQal9T20liaUTamQJdiChOnojCvskMfUML2ztOByzrET6YO4DB8T15TTy05va00aevLtERG')
 function App() {
   const [{},dispatch] = useStateValue()
   useEffect(()=>{
-    console.log("odkf")
     const unsubsribe = auth.onAuthStateChanged((authUser)=>{
       if(authUser){
         dispatch({
@@ -38,6 +41,9 @@ function App() {
     <Router> 
       <div className="App">
       <Switch>
+        <Route path="/orders">
+          <Orders/>
+        </Route>
         <Route path="/login">
           <Login/>
         </Route>
@@ -45,7 +51,9 @@ function App() {
           <Favorite/>
         </Route>
         <Route path="/cart">
-          <ShoopingCard/>
+          <Elements stripe={promise}>
+            <ShoopingCard/>
+          </Elements>
         </Route>
         <Route path="/">
           <Header/>

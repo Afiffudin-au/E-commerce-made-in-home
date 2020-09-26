@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import './Header.css'
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -37,7 +37,11 @@ function Header() {
               </Link> 
              )
            }
-           
+           {
+             user &&  <Link to="/orders">
+             <span>Orders</span>
+            </Link> 
+           }
            <Link to="/favorite">
             <IconButton>
               <FavoriteIcon style={{color : red[700],fontSize : '30px'}}/> 

@@ -5,7 +5,10 @@ import {red,blue} from '@material-ui/core/colors';
 import { Link, useHistory } from 'react-router-dom';
 import { auth } from '../firebase';
 import { Loading } from './loading/Loading';
+import { getItemTotal } from '../reducer/Reducer';
+import { useStateValue } from '../stateProvider/StateProvider';
 function Login() {
+  const [{troll}] = useStateValue()
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [loading,setLoading] = useState(false)
@@ -16,8 +19,12 @@ function Login() {
       .then(()=>{  
         setLoading(false)
         setEmail('')
-        setPassword('') 
-       history.push('/')
+        setPassword('')
+        if(getItemTotal(troll) > 0){
+          history.push('/cart')
+        }else{
+          history.push('/')
+        } 
       }).catch((err)=>{
         setLoading(false)
         alert(err)
@@ -30,7 +37,11 @@ function Login() {
         setLoading(false)
         setEmail('')
         setPassword('')
-        history.push('/')
+        if(getItemTotal(troll) > 0){
+          history.push('/cart')
+        }else{
+          history.push('/')
+        } 
       }).catch((err)=>{
         setLoading(false)
         alert(err)

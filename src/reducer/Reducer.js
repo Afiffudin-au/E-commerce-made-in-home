@@ -18,6 +18,10 @@ const reducer = (state,action)=>{
         user : action.user,
         userName : afterSplit
       }
+    case 'EMPTY_TROLL':
+      return{
+        troll: []
+      }
     case 'ADD_TO_TROLL' : 
     return {
       ...state,

@@ -16,6 +16,7 @@ function Header() {
       auth.signOut()
     }
   }
+  console.log('render header')
   return (
     <nav className="header">
       <h1>Shop</h1>

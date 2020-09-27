@@ -22,6 +22,25 @@ function FavoriteContent({id,img,title,price,rate,decs}) {
     history.push('/cart')
   }
   return (
+    <MemoizedFavoriteContent 
+    id={id} 
+    img={img} 
+    title={title} 
+    price={price}
+    rate={rate} 
+    decs={decs} 
+    removeFavorite={removeFavorite}
+    addToCart={addToCart}
+    handleBuy={handleBuy}
+    handleExpandClick={handleExpandClick}
+    classes={classes}
+    expanded={expanded}
+    />
+  )
+}
+function FavoriteContentComponent({id,img,title,price,rate,decs,removeFavorite,addToCart,handleBuy,handleExpandClick,classes,expanded}){
+  console.log('favorite rendered')
+  return(
     <div className="favorite__card">
         <div className="favorite__box">
           <img className="favorite__thumb" src={img} alt=""/>
@@ -46,11 +65,15 @@ function FavoriteContent({id,img,title,price,rate,decs}) {
           </IconButton> 
           <span style={{color : blue[300]}}>{expanded ? 'Hidden' : 'Show More'}</span>
           <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <p>Descripion : Lorem ipsum dolor, sit amet consectetur adipisicing elit. Architecto illo odit cumque veritatis corrupti? Tempora, a qui alias saepe voluptatibus quibusdam sit. Vel, quis. Nostrum repellendus nam vel natus in.</p>
+          <p>Descripion : {decs}</p>
           </Collapse>    
         </div>
       </div>
   )
 }
+function compare(prevProps , nextProps){
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps)
+}
 
+const MemoizedFavoriteContent= React.memo(FavoriteContentComponent,compare)
 export default FavoriteContent

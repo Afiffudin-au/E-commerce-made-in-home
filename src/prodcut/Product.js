@@ -22,9 +22,30 @@ function Product({id,img,title,price,rate,totalSold,decs}) {
     addToCart()
     history.push('/cart')
   }
+  const handleAddToCard = ()=>{
+    addToCart()
+  }
+  return (
+      <MemoizedComponent 
+      id={id} 
+      img={img} 
+      title={title}
+      price={price} 
+      rate={rate} 
+      totalSold={totalSold} 
+      decs={decs} 
+      fav={fav}
+      handleBuy={handleBuy}
+      handleFavorite={handleFavorite}
+      handleAddToCard={handleAddToCard}
+      />
+  )
+}
+function ComponentCard({id,img,title,price,rate,totalSold,decs,fav,handleBuy,handleFavorite,handleAddToCard}){
+  console.log('render')
   return (
     <div className="product">
-      <div className="product__info">
+    <div className="product__info">
         <img className="product__img" src={img} alt=""/>
         <div className="product__content">
           <p className="product__title">{title}</p>
@@ -38,7 +59,7 @@ function Product({id,img,title,price,rate,totalSold,decs}) {
           </div>   
           <p>sold : <strong>{totalSold}</strong></p>
           <div className="product__action">
-            <Button className="product__actionAddToCart" onClick={addToCart} variant="contained" style={{backgroundColor : indigo[400],color : 'white'}}>Add to cart</Button>
+            <Button className="product__actionAddToCart" onClick={handleAddToCard} variant="contained" style={{backgroundColor : indigo[400],color : 'white'}}>Add to cart</Button>
             <Button onClick={handleBuy} className="product__actionBuy" variant="contained" style={{backgroundColor : blueGrey[500],color : 'white'}}>Buy</Button>
             {
               fav ? (
@@ -53,5 +74,9 @@ function Product({id,img,title,price,rate,totalSold,decs}) {
     </div>
   )
 }
-
+//compare props fix every render component
+function compare(prevProps , nextProps){
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps)
+}
+const MemoizedComponent = React.memo(ComponentCard,compare)
 export default Product

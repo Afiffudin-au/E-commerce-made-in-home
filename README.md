@@ -1,3 +1,4 @@
+This is an e-commerce project. This is made using React Js with the addition of Google Firebase. I only display the code on Digithub. I will publish the demo version at another time. There are several features there, namely, add to cart, login, payment and others.
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
